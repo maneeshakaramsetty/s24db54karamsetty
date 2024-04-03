@@ -28,6 +28,21 @@ app.use('/Dog', DogRouter);
 app.use('/grid', gridRouter);
 app.use('/pick', pickRouter);
 
+require('dotenv').config();
+var mongoose = require('mongoose');
+const connectionString = process.env.MONGO_CON
+mongoose.connect(connectionString);
+
+var db = mongoose.connection;
+//Bind connection to error event
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+db.once("open", function(){
+console.log("Connection to DB succeeded");
+
+});
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -46,3 +61,9 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+//Get the default connection
+var db = mongoose.connection;
+//Bind connection to error event
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once("open", function(){
+console.log("Connection to DB succeeded")});
