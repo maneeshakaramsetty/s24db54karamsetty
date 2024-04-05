@@ -2,13 +2,13 @@ extends layout
 
 block content
   h1= title
-  - var results = [{Dog_type: "Lab", Name: "Snoopy", Age: "2", Color: "Black"},{Dog_type: "Husky", Name: "Popy", Age: "3", Color: "White"},{Dog_type: "Pitbull", Name: "Rishil", Age: "1", Color: "Brown"}]
+  - var results = [{Dog_Type: "Lab", Name: "Snoopy", Age: "2", Color: "Black"},{Dog_Type: "Husky", Name: "Popy", Age: "3", Color: "White"},{Dog_Type: "Pitbull", Name: "Rishil", Age: "1", Color: "Brown"}]
 
   .container-fluid
     .row
       each f,index in results 
         .col-sm-2(onclick=`buy(${index})`)
-          | #{f.Dog_type}, #{f.Name}, #{f.Age}, #{f.Color}
+          | #{f.Dog_Type}, #{f.Name}, #{f.Age}, #{f.Color}
           
   script.
     function buy(index) {
