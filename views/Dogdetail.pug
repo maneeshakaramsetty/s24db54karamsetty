@@ -1,0 +1,28 @@
+extends layout
+block content
+  h1= title
+ 
+  if toShow == null
+    h2 No instance to show
+  else
+    - let Dogid = toShow._id
+    - let Dog_Type = toShow.Dog_Type
+    - let Name = toShow.Name
+    - let Age = toShow.Age
+    - let Color = toShow.Color
+    div
+      div.row
+        div.DogAttr.mr-3 Dog ID is:
+        div #{Dogid}
+      div.row
+        div.DogAttr.mr-3 Dog Type is:
+        div #{Dog_Type}
+      div.row
+        div.DogAttr.mr-3 Dog Name is:
+        div #{Name}
+      div.row
+        div.DogAttr.mr-3 Dog Age is:
+        div #{Age}
+      div.row
+        div.DogAttr.mr-3 Dog Color is:
+        div #{Color}

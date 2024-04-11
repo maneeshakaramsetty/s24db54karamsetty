@@ -66,7 +66,7 @@ async function recreateDB(){
   // Delete everything
   await Dog.deleteMany();
  
-  let instance1 = new Dog({Dog_type: 'Lab', Name:'Snoopy', Age: 2, Color:'Black'});
+  let instance1 = new Dog({Dog_Type: 'Lab', Name:'Snoopy', Age: 2, Color:'Black'});
   instance1.save().then(doc=>{
   console.log("First object saved")}
   ).catch(err=>{
@@ -74,7 +74,7 @@ async function recreateDB(){
   });
  
  
-  let instance2 = new Dog({Dog_type: 'Husky', Name:'Popy', Age: 3, Color:'White'});
+  let instance2 = new Dog({Dog_Type: 'Husky', Name:'Popy', Age: 3, Color:'White'});
   instance2.save().then(doc=>{
   console.log("Second object saved")}
   ).catch(err=>{
@@ -82,7 +82,7 @@ async function recreateDB(){
   });
  
  
-  let instance3 = new Dog({Dog_type: 'Pitsbull', Name:'Rishil', Age: 1, Color:'Brown'});
+  let instance3 = new Dog({Dog_Type: 'Pitsbull', Name:'Rishil', Age: 1, Color:'Brown'});
   instance3.save().then(doc=>{
   console.log("Third object saved")}
   ).catch(err=>{

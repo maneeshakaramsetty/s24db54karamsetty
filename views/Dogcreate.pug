@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  h1= title
+  
+  // Add this CSS to your stylesheet
+  style.
+    #DogForm {
+      background-color: red;
+    }
+
+  form(id='DogForm', action="/resource/Dog", method="POST")
+    div.form-group
+      label.DogAttr(for='Dog_Type') Dog type
+      input#Dog_Type(type='text', name='Dog_Type')
+    div.form-group
+      label.DogAttr(for='Name') Dog name
+      input#Name(type='text', name='Name')
+    div.form-group
+      label.DogAttr(for='Age') Dog Age
+      input#Age(type='number', name='Age')
+    div.form-group
+      label.DogAttr(for='Color') Dog Color
+      input#Color(type='text', name='Color')
+    input(type="submit")
+ 
+  script.
+    document.forms['DogForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Save succeeded");
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Save failed " + error);
+      });
+    });
