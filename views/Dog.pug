@@ -1,22 +1,31 @@
 extends layout
-
+ 
 block content
   h1= title
-
-  - let Dog = results
-
-  .container-fluid
-    .row
-      each f, index in results 
-        .col-sm-2.DogAttr(onclick=`buy(${index})`)
-          | #{f.Dog_Type}, #{f.Name}, #{f.Age}, #{f.Color}
-          
+ 
+  - let items = results;
+  - let o;
   script.
-    function buy(index) {
-      alert(`Your purchased Dog: ${index+1}`);
-    }
-  style.
-    .DogAttr {
-      background-color: aquamarine;
-      width: 120px;
+    function buy(x){
+      alert('purchased item ' + x)
+   }
+  div(class='container-fluid')
+    //a(class="btn btn-info" href="/Dog/create") Create
+    div(class='row m-1')
+    div(class="row row-cols-1 row-cols-sm-4 g-6")
+      each item,index in items
+        - let destination = `dispatch(\"/Dog/update?id=${item._id}\")`
+        //- let details = `dispatch(\"/cat/detail?id=${item._id}\")`
+     
+        div(class="catd text-black mb-3" class='col' class='catd' class='catd-body' class='catd-text' onclick='buy('+index+')') Item Type is #{item.Dog_Type}(Item Name is #{item.Name})age is #{item.Age} color is #{item.Color}
+          <br><br>
+          //span(class="btn btn-secondary", onclick= details) Details
+          <br>
+          //a(class="btn btn-danger", href="/cat/delete/?id="+item._id) Delete
+          <br>
+          button.btn( class="btn-success ml-1", onclick= destination) Update
+ 
+  script.
+    function dispatch(path){
+      window.location.href=path
     }
