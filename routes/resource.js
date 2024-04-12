@@ -9,6 +9,8 @@ router.get('/', api_controller.api);
 /// Dog ROUTES ///
 // POST request for creating a Dog.
 router.post('/Dog', Dog_controller.Dog_create_post);
+// DELETE request to delete Dog.
+router.delete('/Dog/:id', Dog_controller.Dog_delete);
 // PUT request to update Dog.
 router.put('/Dog/:id', Dog_controller.Dog_update_put);
 // GET request for one Dog.

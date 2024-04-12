@@ -2,19 +2,21 @@ extends layout
 
 block content
   h1= title
-  - var results = [{Dog_Type: "Lab", Name: "Snoopy", Age: "2", Color: "Black"},{Dog_Type: "Husky", Name: "Popy", Age: "3", Color: "White"},{Dog_Type: "Pitbull", Name: "Rishil", Age: "1", Color: "Brown"}]
+
+  - let Dog = results
 
   .container-fluid
     .row
-      each f,index in results 
-        .col-sm-2(onclick=`buy(${index})`)
+      each f, index in results 
+        .col-sm-2.DogAttr(onclick=`buy(${index})`)
           | #{f.Dog_Type}, #{f.Name}, #{f.Age}, #{f.Color}
           
   script.
     function buy(index) {
       alert(`Your purchased Dog: ${index+1}`);
     }
-  .DogAttr {
-background-color: aquamarine;
-width: 120px;
-}
+  style.
+    .DogAttr {
+      background-color: aquamarine;
+      width: 120px;
+    }
