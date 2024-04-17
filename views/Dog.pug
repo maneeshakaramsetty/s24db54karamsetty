@@ -2,30 +2,21 @@ extends layout
  
 block content
   h1= title
- 
   - let items = results;
-  - let o;
-  script.
-    function buy(x){
-      alert('purchased item ' + x)
-   }
-  div(class='container-fluid')
-    //a(class="btn btn-info" href="/Dog/create") Create
-    div(class='row m-1')
-    div(class="row row-cols-1 row-cols-sm-4 g-6")
-      each item,index in items
-        - let destination = `dispatch(\"/Dog/update?id=${item._id}\")`
-        //- let details = `dispatch(\"/cat/detail?id=${item._id}\")`
-     
-        div(class="catd text-black mb-3" class='col' class='catd' class='catd-body' class='catd-text' onclick='buy('+index+')') Item Type is #{item.Dog_Type}(Item Name is #{item.Name})age is #{item.Age} color is #{item.Color}
-          <br><br>
-          //span(class="btn btn-secondary", onclick= details) Details
-          <br>
-          //a(class="btn btn-danger", href="/cat/delete/?id="+item._id) Delete
-          <br>
-          button.btn( class="btn-success ml-1", onclick= destination) Update
+  a.btn.btn-primary(href="/Dog/create") Create Dog items
+  .container-fluid
+    .row
+      each item in items
+        - let destination = `/Dog/update?id=${item._id}`
+        - let detail = `/Dog/detail?id=${item._id}`
+        - let deletePath = `/Dog/delete?id=${item._id}`
+        .row-sm-2.m-1 Item is #{item.Dog_Type}(#{item.Name}) (#{item.Age})(#{item.Color})
+          button.btn.btn-primary.ml-1(onclick=`dispatch('${destination}')`) Update
+          button.btn.btn-primary.ml-1(onclick=`dispatch('${deletePath}')`) Delete
+          button.btn.btn-primary.ml-1(onclick=`dispatch('${detail}')`) Detail
+         
  
   script.
     function dispatch(path){
-      window.location.href=path
+      window.location.href = path;
     }
